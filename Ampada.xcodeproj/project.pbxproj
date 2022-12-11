@@ -31,6 +31,18 @@
 		11C8D2662945FB7F0082F8B0 /* APIConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2652945FB7F0082F8B0 /* APIConstans.swift */; };
 		11C8D268294602A60082F8B0 /* DomainsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D267294602A60082F8B0 /* DomainsDTO.swift */; };
 		11C8D26A294608110082F8B0 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D269294608110082F8B0 /* Data.swift */; };
+		11C8D26C29463A530082F8B0 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D26B29463A530082F8B0 /* Account.swift */; };
+		11C8D26E29463AD20082F8B0 /* AccountDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D26D29463AD20082F8B0 /* AccountDTO.swift */; };
+		11C8D270294643CB0082F8B0 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D26F294643CA0082F8B0 /* Token.swift */; };
+		11C8D272294644180082F8B0 /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D271294644180082F8B0 /* TokenDTO.swift */; };
+		11C8D27529464FFE0082F8B0 /* GetTokenStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D27429464FFE0082F8B0 /* GetTokenStatus.swift */; };
+		11C8D277294652BF0082F8B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D276294652BF0082F8B0 /* Constants.swift */; };
+		11C8D279294661710082F8B0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D278294661710082F8B0 /* Message.swift */; };
+		11C8D27B29466A7F0082F8B0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D27A29466A7F0082F8B0 /* Person.swift */; };
+		11C8D27D29466BAF0082F8B0 /* PersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D27C29466BAF0082F8B0 /* PersonDTO.swift */; };
+		11C8D27F29466BEB0082F8B0 /* MessageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D27E29466BEB0082F8B0 /* MessageDTO.swift */; };
+		11C8D28129466C780082F8B0 /* MessagesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D28029466C780082F8B0 /* MessagesDTO.swift */; };
+		11C8D285294683CA0082F8B0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D284294683CA0082F8B0 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +71,18 @@
 		11C8D2652945FB7F0082F8B0 /* APIConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstans.swift; sourceTree = "<group>"; };
 		11C8D267294602A60082F8B0 /* DomainsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainsDTO.swift; sourceTree = "<group>"; };
 		11C8D269294608110082F8B0 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		11C8D26B29463A530082F8B0 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		11C8D26D29463AD20082F8B0 /* AccountDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDTO.swift; sourceTree = "<group>"; };
+		11C8D26F294643CA0082F8B0 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		11C8D271294644180082F8B0 /* TokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDTO.swift; sourceTree = "<group>"; };
+		11C8D27429464FFE0082F8B0 /* GetTokenStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTokenStatus.swift; sourceTree = "<group>"; };
+		11C8D276294652BF0082F8B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		11C8D278294661710082F8B0 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		11C8D27A29466A7F0082F8B0 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		11C8D27C29466BAF0082F8B0 /* PersonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDTO.swift; sourceTree = "<group>"; };
+		11C8D27E29466BEB0082F8B0 /* MessageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDTO.swift; sourceTree = "<group>"; };
+		11C8D28029466C780082F8B0 /* MessagesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDTO.swift; sourceTree = "<group>"; };
+		11C8D284294683CA0082F8B0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				11C8D24F2945E6010082F8B0 /* Model */,
+				11C8D27329464FEB0082F8B0 /* Enum */,
 				11C8D2552945E7F50082F8B0 /* Extension */,
 				11C8D24D2945E3CE0082F8B0 /* EmailRepository.swift */,
+				11C8D276294652BF0082F8B0 /* Constants.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -128,10 +154,10 @@
 		11C8D22E2945B4160082F8B0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				11C8D2652945FB7F0082F8B0 /* APIConstans.swift */,
 				11C8D2632945FA0E0082F8B0 /* EmailRepositoryIMP.swift */,
 				11C8D2612945F7250082F8B0 /* NetworkHandler.swift */,
 				11C8D2522945E68F0082F8B0 /* Model */,
-				11C8D2652945FB7F0082F8B0 /* APIConstans.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -166,6 +192,7 @@
 			children = (
 				11C8D2372945BB580082F8B0 /* LoginViewController.swift */,
 				11C8D2382945BB580082F8B0 /* LoginViewController.xib */,
+				11C8D284294683CA0082F8B0 /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -194,6 +221,10 @@
 			isa = PBXGroup;
 			children = (
 				11C8D2502945E6150082F8B0 /* Domain.swift */,
+				11C8D26B29463A530082F8B0 /* Account.swift */,
+				11C8D26F294643CA0082F8B0 /* Token.swift */,
+				11C8D27A29466A7F0082F8B0 /* Person.swift */,
+				11C8D278294661710082F8B0 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,6 +234,11 @@
 			children = (
 				11C8D2532945E6B80082F8B0 /* DomainDTO.swift */,
 				11C8D267294602A60082F8B0 /* DomainsDTO.swift */,
+				11C8D26D29463AD20082F8B0 /* AccountDTO.swift */,
+				11C8D271294644180082F8B0 /* TokenDTO.swift */,
+				11C8D27C29466BAF0082F8B0 /* PersonDTO.swift */,
+				11C8D27E29466BEB0082F8B0 /* MessageDTO.swift */,
+				11C8D28029466C780082F8B0 /* MessagesDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +250,14 @@
 				11C8D269294608110082F8B0 /* Data.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		11C8D27329464FEB0082F8B0 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				11C8D27429464FFE0082F8B0 /* GetTokenStatus.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,21 +339,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C8D2542945E6B80082F8B0 /* DomainDTO.swift in Sources */,
+				11C8D26E29463AD20082F8B0 /* AccountDTO.swift in Sources */,
 				11C8D2662945FB7F0082F8B0 /* APIConstans.swift in Sources */,
 				11C8D2642945FA0E0082F8B0 /* EmailRepositoryIMP.swift in Sources */,
+				11C8D27529464FFE0082F8B0 /* GetTokenStatus.swift in Sources */,
 				11C8D24C2945BC620082F8B0 /* CImageView.swift in Sources */,
 				11C8D24E2945E3CE0082F8B0 /* EmailRepository.swift in Sources */,
+				11C8D26C29463A530082F8B0 /* Account.swift in Sources */,
+				11C8D270294643CB0082F8B0 /* Token.swift in Sources */,
+				11C8D279294661710082F8B0 /* Message.swift in Sources */,
 				11C8D2392945BB580082F8B0 /* LoginViewController.swift in Sources */,
 				11C8D2192945B37E0082F8B0 /* AppDelegate.swift in Sources */,
+				11C8D272294644180082F8B0 /* TokenDTO.swift in Sources */,
+				11C8D27B29466A7F0082F8B0 /* Person.swift in Sources */,
 				11C8D268294602A60082F8B0 /* DomainsDTO.swift in Sources */,
+				11C8D28129466C780082F8B0 /* MessagesDTO.swift in Sources */,
 				11C8D2412945BC150082F8B0 /* UIImageView.swift in Sources */,
+				11C8D285294683CA0082F8B0 /* LoginViewModel.swift in Sources */,
 				11C8D2402945BC150082F8B0 /* UIViewController.swift in Sources */,
 				11C8D21B2945B37E0082F8B0 /* SceneDelegate.swift in Sources */,
 				11C8D2622945F7250082F8B0 /* NetworkHandler.swift in Sources */,
+				11C8D277294652BF0082F8B0 /* Constants.swift in Sources */,
+				11C8D27F29466BEB0082F8B0 /* MessageDTO.swift in Sources */,
 				11C8D2342945B51A0082F8B0 /* HomeViewController.swift in Sources */,
 				11C8D2572945E80D0082F8B0 /* Date.swift in Sources */,
 				11C8D23F2945BC150082F8B0 /* UIColor.swift in Sources */,
 				11C8D24A2945BC620082F8B0 /* CView.swift in Sources */,
+				11C8D27D29466BAF0082F8B0 /* PersonDTO.swift in Sources */,
 				11C8D26A294608110082F8B0 /* Data.swift in Sources */,
 				11C8D2492945BC620082F8B0 /* CButton.swift in Sources */,
 				11C8D2512945E6150082F8B0 /* Domain.swift in Sources */,
