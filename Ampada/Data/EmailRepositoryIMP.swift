@@ -9,13 +9,41 @@ import Foundation
 import Combine
 
 class EmailRepositoryIMP : EmailRepository {
-
+    
+    private let networkHandler = NetworkHandler()
     private var domainBind = PassthroughSubject<[Domain], Never>()
     private var signUpBind = PassthroughSubject<Account, Never>()
+    private var tokenBind = PassthroughSubject<GetTokenStatus, Never>()
     
+    
+    //  MARK: - DoWeHaveAToken
+    /// It check that we have a token in UserDefaults or not
+    ///
+    /// - throws: none
+    /// - returns: Returns a token status
+    ///
+    func doWeHaveAToken() -> GetTokenStatus {
+        
+        guard let token = Token() else {
+            return .failed
+        }
+        
+        networkHandler.token = token.token
+        
+        return .success
+    }
+    
+    
+    //  MARK: - GetDomains
+    /// Get available domains
+    /// We have to use this when creating an account, to retrieve the domain.
+    ///
+    /// - throws: none
+    /// - returns: Returns a list of domains by PassthroughSubject (Combine)
+    ///
     func getDomains() -> PassthroughSubject<[Domain], Never> {
         
-        NetworkHandler().sendGetRequest(url: APIConstans.domains, parameters: [:], completion: {
+        networkHandler.sendGetRequest(url: APIConstans.domains, parameters: [:], completion: {
             (response: Any, status: Bool) in
             
             if status {
@@ -34,6 +62,15 @@ class EmailRepositoryIMP : EmailRepository {
     }
     
     
+    //  MARK: - SignUp
+    /// Creates an Account resource (Registration)
+    ///
+    /// - parameter username: Account's address
+    /// - parameter password: Account's password.
+    /// - parameter domain: The domain that user chased.
+    /// - throws: none
+    /// - returns: Returns a account by PassthroughSubject (Combine)
+    ///
     func signUp(with username: String, password: String, domain: Domain) -> PassthroughSubject<Account, Never> {
         
         let address = "\(username)@\(domain.domain)"
@@ -43,7 +80,7 @@ class EmailRepositoryIMP : EmailRepository {
             "password" : password
         ]
         
-        NetworkHandler().sendPostRequest(url: APIConstans.accounts, parameters: parameters, completion: {
+        networkHandler.sendPostRequest(url: APIConstans.accounts, parameters: parameters, completion: {
             (response: Any, status: Bool) in
             
             if status {
@@ -62,5 +99,45 @@ class EmailRepositoryIMP : EmailRepository {
         })
         
         return signUpBind
+    }
+    
+    
+    //  MARK: - GetToken
+    /// Get token with account information
+    ///
+    /// - parameter username: Account's address
+    /// - parameter password: Account's password.
+    /// - throws: none
+    /// - returns: Returns a token status by PassthroughSubject (Combine)
+    ///
+    func getToken(with username: String, password: String) -> PassthroughSubject<GetTokenStatus, Never> {
+        
+        let parameters = [
+            "address"  : username,
+            "password" : password
+        ]
+        
+        networkHandler.sendPostRequest(url: APIConstans.token, parameters: parameters, completion: {
+            (response: Any, status: Bool) in
+            
+            if status {
+                //print(response)
+                let decoder = JSONDecoder()
+                do {
+                    let tokenDTO = try decoder.decode(TokenDTO.self, from: response as! Data)
+                    let token = tokenDTO.toToken()
+                    token.saveToUserDefault()
+                    self.tokenBind.send(.success)
+                } catch {
+                    self.tokenBind.send(.failed)
+                    print("getDataList Unexpected error: \(error).")
+                }
+                
+            } else {
+                //delegate.checkUserNameFailed()
+            }
+        })
+        
+        return tokenBind
     }
 }

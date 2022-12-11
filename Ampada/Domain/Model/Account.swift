@@ -32,4 +32,3 @@ struct Account {
         retentionAt = Date(accountDTO.retentionAt)
     }
 }
-

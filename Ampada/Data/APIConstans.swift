@@ -11,8 +11,9 @@ struct APIConstans {
     
     static let base = "https://api.mail.gw"
     
-    static let domains = base + "/domains"
+    static let domains  = base + "/domains"
     static let accounts = base + "/accounts"
+    static let token    = base + "/token"
     
     
 }

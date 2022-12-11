@@ -10,7 +10,7 @@ import Alamofire
 
 final class NetworkHandler {
     
-    var token = ""
+    var token : String = ""
     
     init() {
 
