@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Domain {
+struct Domain {
     
     let id        : String
     let domain    : String

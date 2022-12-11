@@ -75,7 +75,7 @@ final class NetworkHandler {
         print("parameters : \(parameters)")
         print("Headers : \(currentHeaders)")
         
-        AF.request(url, method: method, parameters: parameters, headers: currentHeaders)
+        AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: currentHeaders)
             .responseData { response in
                 print("Body For \(url): \(String(describing: response.value?.convertToDictionary()))")
             switch response.result {
