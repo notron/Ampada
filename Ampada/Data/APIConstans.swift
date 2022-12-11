@@ -14,6 +14,7 @@ struct APIConstans {
     static let domains  = base + "/domains"
     static let accounts = base + "/accounts"
     static let token    = base + "/token"
+    static let messages = base + "/messages"
     
     
 }

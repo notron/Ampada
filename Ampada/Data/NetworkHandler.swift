@@ -8,16 +8,11 @@
 import Foundation
 import Alamofire
 
-final class NetworkHandler {
+class NetworkHandler {
     
     var token : String = ""
     
-    init() {
-
-//        if let accessToken = UserDefaults.standard.string(forKey: Keys.token) {
-//            token = "\(accessToken)"
-//        }
-    }
+    init() {}
     
     func sendGetRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Bool) -> Void) {
         
@@ -42,7 +37,7 @@ final class NetworkHandler {
     private func sendRequest(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, completion: @escaping(Any, Bool) -> Void) {
         
         var currentHeaders : HTTPHeaders = [
-            "AUTH-TOKEN"    : token,
+            "Authorization" : "Bearer " + token,
             "Content-Type"  : "application/json"
         ]
         if headers != nil { currentHeaders = headers! }
@@ -53,7 +48,7 @@ final class NetworkHandler {
         
         AF.request(url, method: method, parameters: parameters, headers: currentHeaders)
             .responseData { response in
-                print("Body For \(url): \(String(describing: response.value?.convertToDictionary()))")
+                print("Body For \(url): \n \(String(describing: response.value?.convertToDictionary()))")
             switch response.result {
             case .success:
                 completion(response.value as Any, true)
@@ -66,7 +61,7 @@ final class NetworkHandler {
     private func sendRequestWithEncoding(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, encoding: ParameterEncoding, completion: @escaping(Any, Bool) -> Void) {
         
         var currentHeaders : HTTPHeaders = [
-            "AUTH-TOKEN"   : token,
+            "Authorization"   : "Bearer " + token,
             "Content-Type" : "application/json"
         ]
         if headers != nil { currentHeaders = headers! }
@@ -77,7 +72,7 @@ final class NetworkHandler {
         
         AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: currentHeaders)
             .responseData { response in
-                print("Body For \(url): \(String(describing: response.value?.convertToDictionary()))")
+                print("Body For \(url): \n \(String(describing: response.value?.convertToDictionary()))")
             switch response.result {
             case .success:
                 completion(response.value as Any, true)

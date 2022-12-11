@@ -14,6 +14,7 @@ class EmailRepositoryIMP : EmailRepository {
     private var domainBind = PassthroughSubject<[Domain], Never>()
     private var signUpBind = PassthroughSubject<Account, Never>()
     private var tokenBind = PassthroughSubject<GetTokenStatus, Never>()
+    private var messagesBind = PassthroughSubject<[Message], Never>()
     
     
     //  MARK: - DoWeHaveAToken
@@ -29,6 +30,7 @@ class EmailRepositoryIMP : EmailRepository {
         }
         
         networkHandler.token = token.token
+        print("Token = \(networkHandler.token)")
         
         return .success
     }
@@ -139,5 +141,36 @@ class EmailRepositoryIMP : EmailRepository {
         })
         
         return tokenBind
+    }
+    
+    
+    //  MARK: - GetMessages
+    /// Get messages from the account with the token
+    ///
+    /// - parameter username: Account's address
+    /// - parameter password: Account's password.
+    /// - throws: None
+    /// - returns: Returns Messages by PassthroughSubject (Combine)
+    ///
+    func getMessages(page: Int) -> PassthroughSubject<[Message], Never> {
+        
+        let parameters = [ "page" : page ]
+        
+        networkHandler.sendGetRequest(url: APIConstans.messages, parameters: parameters, completion: {
+            (response: Any, status: Bool) in
+            
+            if status {
+                do {
+                    let domainsDTO = try JSONDecoder().decode(MessagesDTO.self, from: response as! Data)
+                    self.messagesBind.send(domainsDTO.member.map({ $0.toMessage() }))
+                } catch {
+                    print("getDataList Unexpected error: \(error).")
+                }
+            } else {
+                //delegate.checkUserNameFailed()
+            }
+        })
+        
+        return messagesBind
     }
 }

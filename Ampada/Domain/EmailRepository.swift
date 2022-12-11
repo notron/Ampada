@@ -13,7 +13,7 @@ protocol EmailRepository {
     //  MARK: - DoWeHaveAToken
     /// It check that we have a token in UserDefaults or not
     ///
-    /// - throws: none
+    /// - throws: None
     /// - returns: Returns a token status
     ///
     func doWeHaveAToken() -> GetTokenStatus
@@ -22,7 +22,7 @@ protocol EmailRepository {
     /// Get available domains
     /// We have to use this when creating an account, to retrieve the domain.
     ///
-    /// - throws: none
+    /// - throws: None
     /// - returns: Returns a list of domains by PassthroughSubject (Combine)
     ///
     func getDomains() -> PassthroughSubject<[Domain], Never>
@@ -33,7 +33,7 @@ protocol EmailRepository {
     /// - parameter username: Account's address
     /// - parameter password: Account's password.
     /// - parameter domain: The domain that user chased.
-    /// - throws: none
+    /// - throws: None
     /// - returns: Returns a account by PassthroughSubject (Combine)
     ///
     func signUp(with username: String, password: String, domain: Domain) -> PassthroughSubject<Account, Never>
@@ -43,9 +43,19 @@ protocol EmailRepository {
     ///
     /// - parameter username: Account's address
     /// - parameter password: Account's password.
-    /// - throws: none
+    /// - throws: None
     /// - returns: Returns a token status by PassthroughSubject (Combine)
     ///
     func getToken(with username: String, password: String) -> PassthroughSubject<GetTokenStatus, Never>
+    
+    //  MARK: - GetMessages
+    /// Gets all the message resources of a given page.
+    ///
+    /// - parameter username: Account's address
+    /// - parameter password: Account's password.
+    /// - throws: None
+    /// - returns: Returns Messages by PassthroughSubject (Combine)
+    ///
+    func getMessages(page: Int) -> PassthroughSubject<[Message], Never>
     
 }
