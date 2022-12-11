@@ -44,10 +44,11 @@ class LoginViewController: UIViewController {
         loginViewModel.signIn(userName: userName, password: password)
     }
     
-//    @IBAction func signUoAction(_ sender: Any) {
-//
-//        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-//    }
+    @IBAction func signUpAction(_ sender: Any) {
+
+        let view = SignUpViewController(.init(loginViewModel.emailRepositoryIMP))
+        self.navigationController?.pushViewController(view, animated: true)
+    }
 }
 
 //MARK: - UITextField Delegate

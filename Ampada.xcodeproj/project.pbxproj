@@ -17,7 +17,6 @@
 		11C8D23A2945BB580082F8B0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C8D2382945BB580082F8B0 /* LoginViewController.xib */; };
 		11C8D23F2945BC150082F8B0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D23C2945BC150082F8B0 /* UIColor.swift */; };
 		11C8D2402945BC150082F8B0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D23D2945BC150082F8B0 /* UIViewController.swift */; };
-		11C8D2412945BC150082F8B0 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D23E2945BC150082F8B0 /* UIImageView.swift */; };
 		11C8D2492945BC620082F8B0 /* CButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2442945BC620082F8B0 /* CButton.swift */; };
 		11C8D24A2945BC620082F8B0 /* CView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2452945BC620082F8B0 /* CView.swift */; };
 		11C8D24C2945BC620082F8B0 /* CImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2472945BC620082F8B0 /* CImageView.swift */; };
@@ -43,6 +42,10 @@
 		11C8D27F29466BEB0082F8B0 /* MessageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D27E29466BEB0082F8B0 /* MessageDTO.swift */; };
 		11C8D28129466C780082F8B0 /* MessagesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D28029466C780082F8B0 /* MessagesDTO.swift */; };
 		11C8D285294683CA0082F8B0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D284294683CA0082F8B0 /* LoginViewModel.swift */; };
+		11C8D289294689620082F8B0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D287294689620082F8B0 /* SignUpViewController.swift */; };
+		11C8D28A294689620082F8B0 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C8D288294689620082F8B0 /* SignUpViewController.xib */; };
+		11C8D28C294689A20082F8B0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D28B294689A20082F8B0 /* SignUpViewModel.swift */; };
+		11C8D28E29468D750082F8B0 /* DomainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D28D29468D750082F8B0 /* DomainVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +61,6 @@
 		11C8D2382945BB580082F8B0 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		11C8D23C2945BC150082F8B0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		11C8D23D2945BC150082F8B0 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		11C8D23E2945BC150082F8B0 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		11C8D2442945BC620082F8B0 /* CButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CButton.swift; sourceTree = "<group>"; };
 		11C8D2452945BC620082F8B0 /* CView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CView.swift; sourceTree = "<group>"; };
 		11C8D2472945BC620082F8B0 /* CImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CImageView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,10 @@
 		11C8D27E29466BEB0082F8B0 /* MessageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDTO.swift; sourceTree = "<group>"; };
 		11C8D28029466C780082F8B0 /* MessagesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesDTO.swift; sourceTree = "<group>"; };
 		11C8D284294683CA0082F8B0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		11C8D287294689620082F8B0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		11C8D288294689620082F8B0 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		11C8D28B294689A20082F8B0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		11C8D28D29468D750082F8B0 /* DomainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,7 @@
 		11C8D22F2945B4B70082F8B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11C8D2862946894B0082F8B0 /* SignUp */,
 				11C8D2362945BB4B0082F8B0 /* Login */,
 				11C8D2312945B4FC0082F8B0 /* Home */,
 			);
@@ -174,6 +181,7 @@
 		11C8D2302945B4C10082F8B0 /* VIewModels */ = {
 			isa = PBXGroup;
 			children = (
+				11C8D28D29468D750082F8B0 /* DomainVM.swift */,
 			);
 			path = VIewModels;
 			sourceTree = "<group>";
@@ -202,7 +210,6 @@
 			children = (
 				11C8D23C2945BC150082F8B0 /* UIColor.swift */,
 				11C8D23D2945BC150082F8B0 /* UIViewController.swift */,
-				11C8D23E2945BC150082F8B0 /* UIImageView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -258,6 +265,16 @@
 				11C8D27429464FFE0082F8B0 /* GetTokenStatus.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		11C8D2862946894B0082F8B0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				11C8D287294689620082F8B0 /* SignUpViewController.swift */,
+				11C8D288294689620082F8B0 /* SignUpViewController.xib */,
+				11C8D28B294689A20082F8B0 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C8D28A294689620082F8B0 /* SignUpViewController.xib in Resources */,
 				11C8D23A2945BB580082F8B0 /* LoginViewController.xib in Resources */,
 				11C8D2252945B3810082F8B0 /* LaunchScreen.storyboard in Resources */,
 				11C8D2222945B3810082F8B0 /* Assets.xcassets in Resources */,
@@ -340,6 +358,7 @@
 			files = (
 				11C8D2542945E6B80082F8B0 /* DomainDTO.swift in Sources */,
 				11C8D26E29463AD20082F8B0 /* AccountDTO.swift in Sources */,
+				11C8D28E29468D750082F8B0 /* DomainVM.swift in Sources */,
 				11C8D2662945FB7F0082F8B0 /* APIConstans.swift in Sources */,
 				11C8D2642945FA0E0082F8B0 /* EmailRepositoryIMP.swift in Sources */,
 				11C8D27529464FFE0082F8B0 /* GetTokenStatus.swift in Sources */,
@@ -348,13 +367,13 @@
 				11C8D26C29463A530082F8B0 /* Account.swift in Sources */,
 				11C8D270294643CB0082F8B0 /* Token.swift in Sources */,
 				11C8D279294661710082F8B0 /* Message.swift in Sources */,
+				11C8D289294689620082F8B0 /* SignUpViewController.swift in Sources */,
 				11C8D2392945BB580082F8B0 /* LoginViewController.swift in Sources */,
 				11C8D2192945B37E0082F8B0 /* AppDelegate.swift in Sources */,
 				11C8D272294644180082F8B0 /* TokenDTO.swift in Sources */,
 				11C8D27B29466A7F0082F8B0 /* Person.swift in Sources */,
 				11C8D268294602A60082F8B0 /* DomainsDTO.swift in Sources */,
 				11C8D28129466C780082F8B0 /* MessagesDTO.swift in Sources */,
-				11C8D2412945BC150082F8B0 /* UIImageView.swift in Sources */,
 				11C8D285294683CA0082F8B0 /* LoginViewModel.swift in Sources */,
 				11C8D2402945BC150082F8B0 /* UIViewController.swift in Sources */,
 				11C8D21B2945B37E0082F8B0 /* SceneDelegate.swift in Sources */,
@@ -368,6 +387,7 @@
 				11C8D27D29466BAF0082F8B0 /* PersonDTO.swift in Sources */,
 				11C8D26A294608110082F8B0 /* Data.swift in Sources */,
 				11C8D2492945BC620082F8B0 /* CButton.swift in Sources */,
+				11C8D28C294689A20082F8B0 /* SignUpViewModel.swift in Sources */,
 				11C8D2512945E6150082F8B0 /* Domain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

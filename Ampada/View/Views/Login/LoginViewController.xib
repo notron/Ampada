@@ -136,6 +136,9 @@
                             <state key="normal" title="Sign Up">
                                 <color key="titleColor" systemColor="systemRedColor"/>
                             </state>
+                            <connections>
+                                <action selector="signUpAction:" destination="-1" eventType="touchUpInside" id="YOt-ZB-GDy"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
