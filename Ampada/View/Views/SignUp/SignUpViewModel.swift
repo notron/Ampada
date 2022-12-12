@@ -11,17 +11,17 @@ import Combine
 class SignUpViewModel {
     
     private var subscriptions = Set<AnyCancellable>()
-    let emailRepositoryIMP : EmailRepositoryIMP
+    let emailRepository : EmailRepository
     
     private var domainViewModelsBind = PassthroughSubject<[DomainVM], Never>()
     
-    init(_ emailRepositoryIMP: EmailRepositoryIMP) {
-        self.emailRepositoryIMP = emailRepositoryIMP
+    init(_ emailRepository: EmailRepository) {
+        self.emailRepository = emailRepository
     }
     
     func getDomains() -> PassthroughSubject<[DomainVM], Never> {
     
-        emailRepositoryIMP.getDomains()
+        emailRepository.getDomains()
         .sink(receiveCompletion: {value in
             
         }, receiveValue: { [weak self] value in
@@ -36,7 +36,7 @@ class SignUpViewModel {
     
     func signUp(userName: String, password: String, domainVM: DomainVM) {
         
-        emailRepositoryIMP.signUp(with: userName, password: password, domain: domainVM.domain)
+        emailRepository.signUp(with: userName, password: password, domain: domainVM.domain)
             .sink(receiveCompletion: {value in
 
         }, receiveValue: { [weak self] value in
@@ -48,7 +48,7 @@ class SignUpViewModel {
     
     private func getToken(userName: String, password: String) {
         
-        emailRepositoryIMP.getToken(with: userName, password: password)
+        emailRepository.getToken(with: userName, password: password)
         .sink(receiveCompletion: {value in
         
         }, receiveValue: { [weak self] value in

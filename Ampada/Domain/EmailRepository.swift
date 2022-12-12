@@ -10,6 +10,8 @@ import Combine
 
 protocol EmailRepository {
     
+    var token: Token? { get set }
+    
     //  MARK: - DoWeHaveAToken
     /// It check that we have a token in UserDefaults or not
     ///
@@ -47,6 +49,24 @@ protocol EmailRepository {
     /// - returns: Returns a token status by PassthroughSubject (Combine)
     ///
     func getToken(with username: String, password: String) -> PassthroughSubject<GetTokenStatus, Never>
+    
+    //  MARK: - GetAccount
+    /// Get an Account resource by its id
+    /// Obviously, the Bearer token needs to be the one of the account you are trying to retrieve
+    ///
+    /// - parameter id: Account's id
+    /// - throws: None
+    /// - returns: Returns a account status by PassthroughSubject (Combine)
+    ///
+    func getAccount(with id: String) -> PassthroughSubject<(Account?, Error?), Never>
+    
+    //  MARK: - logOut
+    /// LogOut Account from device
+    ///
+    /// - throws: None
+    /// - returns: None
+    ///
+    func logOut()
     
     //  MARK: - GetMessages
     /// Gets all the message resources of a given page.

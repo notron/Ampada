@@ -14,30 +14,30 @@ class NetworkHandler {
     
     init() {}
     
-    func sendGetRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Bool) -> Void) {
+    func sendGetRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Error?) -> Void) {
         
         sendRequest(url: url, method: .get, headers: nil, parameters: parameters, completion: completion)
     }
     
-    func sendPostRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Bool) -> Void) {
+    func sendPostRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Error?) -> Void) {
         
         sendRequestWithEncoding(url: url, method: .post, headers: nil, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
     }
     
-    func sendPutRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Bool) -> Void) {
+    func sendPutRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Error?) -> Void) {
         
         sendRequestWithEncoding(url: url, method: .put, headers: nil, parameters: parameters, encoding: JSONEncoding.default, completion: completion)
     }
     
-    func sendDeleteRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Bool) -> Void) {
+    func sendDeleteRequest(url: String, parameters: [String: Any], completion: @escaping(Any, Error?) -> Void) {
         
         sendRequest(url: url, method: .delete, headers: nil, parameters: parameters, completion: completion)
     }
     
-    private func sendRequest(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, completion: @escaping(Any, Bool) -> Void) {
+    private func sendRequest(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, completion: @escaping(Any, Error?) -> Void) {
         
         var currentHeaders : HTTPHeaders = [
-            "Authorization" : "Bearer " + token,
+            "Authorization" : token,
             "Content-Type"  : "application/json"
         ]
         if headers != nil { currentHeaders = headers! }
@@ -49,16 +49,28 @@ class NetworkHandler {
         AF.request(url, method: method, parameters: parameters, headers: currentHeaders)
             .responseData { response in
                 print("Body For \(url): \n \(String(describing: response.value?.convertToDictionary()))")
+                
             switch response.result {
             case .success:
-                completion(response.value as Any, true)
+                
+                do {
+                    let errorDTO = try JSONDecoder().decode(ErrorDTO.self, from: response.value ?? Data())
+                    
+                    completion(false, errorDTO.toError())
+
+                } catch {
+                    print("getDataList Unexpected error: \(error).")
+                    completion(response.value as Any, nil)
+                }
+                
+                //completion(response.value as Any, true)
             case .failure(let error):
-                completion(error, false)
+                completion(false, Error(error.errorDescription ?? ""))
             }
         }
     }
     
-    private func sendRequestWithEncoding(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, encoding: ParameterEncoding, completion: @escaping(Any, Bool) -> Void) {
+    private func sendRequestWithEncoding(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, encoding: ParameterEncoding, completion: @escaping(Any, Error?) -> Void) {
         
         var currentHeaders : HTTPHeaders = [
             "Authorization"   : "Bearer " + token,
@@ -75,9 +87,9 @@ class NetworkHandler {
                 print("Body For \(url): \n \(String(describing: response.value?.convertToDictionary()))")
             switch response.result {
             case .success:
-                completion(response.value as Any, true)
+                completion(response.value as Any, nil)
             case .failure(let error):
-                completion(error, false)
+                completion(false, Error(error.errorDescription ?? ""))
             }
         }
     }

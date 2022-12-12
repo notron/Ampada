@@ -46,6 +46,11 @@
 		11C8D28A294689620082F8B0 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C8D288294689620082F8B0 /* SignUpViewController.xib */; };
 		11C8D28C294689A20082F8B0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D28B294689A20082F8B0 /* SignUpViewModel.swift */; };
 		11C8D28E29468D750082F8B0 /* DomainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D28D29468D750082F8B0 /* DomainVM.swift */; };
+		11C8D292294697EE0082F8B0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D290294697EE0082F8B0 /* SplashViewController.swift */; };
+		11C8D293294697EE0082F8B0 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C8D291294697EE0082F8B0 /* SplashViewController.xib */; };
+		11C8D295294698330082F8B0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D294294698330082F8B0 /* SplashViewModel.swift */; };
+		11C8D29729476B0A0082F8B0 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29629476B0A0082F8B0 /* ErrorDTO.swift */; };
+		11C8D29929476B430082F8B0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29829476B430082F8B0 /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +94,11 @@
 		11C8D288294689620082F8B0 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		11C8D28B294689A20082F8B0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		11C8D28D29468D750082F8B0 /* DomainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainVM.swift; sourceTree = "<group>"; };
+		11C8D290294697EE0082F8B0 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		11C8D291294697EE0082F8B0 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		11C8D294294698330082F8B0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		11C8D29629476B0A0082F8B0 /* ErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDTO.swift; sourceTree = "<group>"; };
+		11C8D29829476B430082F8B0 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +181,7 @@
 		11C8D22F2945B4B70082F8B0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				11C8D28F294697C60082F8B0 /* Splash */,
 				11C8D2862946894B0082F8B0 /* SignUp */,
 				11C8D2362945BB4B0082F8B0 /* Login */,
 				11C8D2312945B4FC0082F8B0 /* Home */,
@@ -232,6 +243,7 @@
 				11C8D26F294643CA0082F8B0 /* Token.swift */,
 				11C8D27A29466A7F0082F8B0 /* Person.swift */,
 				11C8D278294661710082F8B0 /* Message.swift */,
+				11C8D29829476B430082F8B0 /* Error.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +258,7 @@
 				11C8D27C29466BAF0082F8B0 /* PersonDTO.swift */,
 				11C8D27E29466BEB0082F8B0 /* MessageDTO.swift */,
 				11C8D28029466C780082F8B0 /* MessagesDTO.swift */,
+				11C8D29629476B0A0082F8B0 /* ErrorDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -275,6 +288,16 @@
 				11C8D28B294689A20082F8B0 /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		11C8D28F294697C60082F8B0 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				11C8D290294697EE0082F8B0 /* SplashViewController.swift */,
+				11C8D291294697EE0082F8B0 /* SplashViewController.xib */,
+				11C8D294294698330082F8B0 /* SplashViewModel.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C8D28A294689620082F8B0 /* SignUpViewController.xib in Resources */,
+				11C8D293294697EE0082F8B0 /* SplashViewController.xib in Resources */,
 				11C8D23A2945BB580082F8B0 /* LoginViewController.xib in Resources */,
 				11C8D2252945B3810082F8B0 /* LaunchScreen.storyboard in Resources */,
 				11C8D2222945B3810082F8B0 /* Assets.xcassets in Resources */,
@@ -359,12 +383,14 @@
 				11C8D2542945E6B80082F8B0 /* DomainDTO.swift in Sources */,
 				11C8D26E29463AD20082F8B0 /* AccountDTO.swift in Sources */,
 				11C8D28E29468D750082F8B0 /* DomainVM.swift in Sources */,
+				11C8D292294697EE0082F8B0 /* SplashViewController.swift in Sources */,
 				11C8D2662945FB7F0082F8B0 /* APIConstans.swift in Sources */,
 				11C8D2642945FA0E0082F8B0 /* EmailRepositoryIMP.swift in Sources */,
 				11C8D27529464FFE0082F8B0 /* GetTokenStatus.swift in Sources */,
 				11C8D24C2945BC620082F8B0 /* CImageView.swift in Sources */,
 				11C8D24E2945E3CE0082F8B0 /* EmailRepository.swift in Sources */,
 				11C8D26C29463A530082F8B0 /* Account.swift in Sources */,
+				11C8D295294698330082F8B0 /* SplashViewModel.swift in Sources */,
 				11C8D270294643CB0082F8B0 /* Token.swift in Sources */,
 				11C8D279294661710082F8B0 /* Message.swift in Sources */,
 				11C8D289294689620082F8B0 /* SignUpViewController.swift in Sources */,
@@ -376,6 +402,7 @@
 				11C8D28129466C780082F8B0 /* MessagesDTO.swift in Sources */,
 				11C8D285294683CA0082F8B0 /* LoginViewModel.swift in Sources */,
 				11C8D2402945BC150082F8B0 /* UIViewController.swift in Sources */,
+				11C8D29729476B0A0082F8B0 /* ErrorDTO.swift in Sources */,
 				11C8D21B2945B37E0082F8B0 /* SceneDelegate.swift in Sources */,
 				11C8D2622945F7250082F8B0 /* NetworkHandler.swift in Sources */,
 				11C8D277294652BF0082F8B0 /* Constants.swift in Sources */,
@@ -385,6 +412,7 @@
 				11C8D23F2945BC150082F8B0 /* UIColor.swift in Sources */,
 				11C8D24A2945BC620082F8B0 /* CView.swift in Sources */,
 				11C8D27D29466BAF0082F8B0 /* PersonDTO.swift in Sources */,
+				11C8D29929476B430082F8B0 /* Error.swift in Sources */,
 				11C8D26A294608110082F8B0 /* Data.swift in Sources */,
 				11C8D2492945BC620082F8B0 /* CButton.swift in Sources */,
 				11C8D28C294689A20082F8B0 /* SignUpViewModel.swift in Sources */,

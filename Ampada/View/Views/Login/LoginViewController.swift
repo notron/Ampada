@@ -46,7 +46,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func signUpAction(_ sender: Any) {
 
-        let view = SignUpViewController(.init(loginViewModel.emailRepositoryIMP))
+        let view = SignUpViewController(.init(loginViewModel.emailRepository))
         self.navigationController?.pushViewController(view, animated: true)
     }
 }

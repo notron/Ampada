@@ -9,12 +9,15 @@ import Foundation
 import Combine
 
 class EmailRepositoryIMP : EmailRepository {
+        
+    var token: Token?
     
     private let networkHandler = NetworkHandler()
     private var domainBind = PassthroughSubject<[Domain], Never>()
     private var signUpBind = PassthroughSubject<Account, Never>()
     private var tokenBind = PassthroughSubject<GetTokenStatus, Never>()
     private var messagesBind = PassthroughSubject<[Message], Never>()
+    private var accountBind = PassthroughSubject<(Account?, Error?), Never>()
     
     
     //  MARK: - DoWeHaveAToken
@@ -29,6 +32,7 @@ class EmailRepositoryIMP : EmailRepository {
             return .failed
         }
         
+        self.token = token
         networkHandler.token = token.token
         print("Token = \(networkHandler.token)")
         
@@ -46,16 +50,18 @@ class EmailRepositoryIMP : EmailRepository {
     func getDomains() -> PassthroughSubject<[Domain], Never> {
         
         networkHandler.sendGetRequest(url: APIConstans.domains, parameters: [:], completion: {
-            (response: Any, status: Bool) in
+            (response: Any, error: Error?) in
             
-            if status {
+            if (error != nil) {
+                
+            } else {
+                
                 do {
                     let domainsDTO = try JSONDecoder().decode(DomainsDTO.self, from: response as! Data)
                     self.domainBind.send(domainsDTO.member.map({ $0.toDomain() }))
                 } catch {
                     print("getDataList Unexpected error: \(error).")
                 }
-            } else {
                 //delegate.checkUserNameFailed()
             }
         })
@@ -83,20 +89,20 @@ class EmailRepositoryIMP : EmailRepository {
         ]
         
         networkHandler.sendPostRequest(url: APIConstans.accounts, parameters: parameters, completion: {
-            (response: Any, status: Bool) in
+            (response: Any, error: Error?) in
             
-            if status {
+            if (error != nil) {
                 //print(response)
-                let decoder = JSONDecoder()
+                
+                
+            } else {
+                
                 do {
-                    let accountDTO = try decoder.decode(AccountDTO.self, from: response as! Data)
+                    let accountDTO = try JSONDecoder().decode(AccountDTO.self, from: response as! Data)
                     self.signUpBind.send(accountDTO.toAccount())
                 } catch {
                     print("getDataList Unexpected error: \(error).")
                 }
-                
-            } else {
-                //delegate.checkUserNameFailed()
             }
         })
         
@@ -120,13 +126,15 @@ class EmailRepositoryIMP : EmailRepository {
         ]
         
         networkHandler.sendPostRequest(url: APIConstans.token, parameters: parameters, completion: {
-            (response: Any, status: Bool) in
+            (response: Any, error: Error?) in
             
-            if status {
+            if (error != nil) {
                 //print(response)
-                let decoder = JSONDecoder()
+                
+            } else {
+                
                 do {
-                    let tokenDTO = try decoder.decode(TokenDTO.self, from: response as! Data)
+                    let tokenDTO = try JSONDecoder().decode(TokenDTO.self, from: response as! Data)
                     let token = tokenDTO.toToken()
                     token.saveToUserDefault()
                     self.tokenBind.send(.success)
@@ -134,13 +142,57 @@ class EmailRepositoryIMP : EmailRepository {
                     self.tokenBind.send(.failed)
                     print("getDataList Unexpected error: \(error).")
                 }
-                
-            } else {
                 //delegate.checkUserNameFailed()
             }
         })
         
         return tokenBind
+    }
+    
+    
+    //  MARK: - GetAccount
+    /// Get an Account resource by its id
+    /// Obviously, the Bearer token needs to be the one of the account you are trying to retrieve
+    ///
+    /// - parameter id: Account's id
+    /// - throws: None
+    /// - returns: Returns a account status by PassthroughSubject (Combine)
+    ///
+    func getAccount(with id: String) -> PassthroughSubject<(Account?, Error?), Never> {
+        
+        networkHandler.sendGetRequest(url: APIConstans.accounts + "/\(id)", parameters: [:], completion: {
+            (response: Any, error: Error?) in
+            
+            if (error != nil) {
+                print(error?.message)
+                self.accountBind.send((nil, error))
+                
+            } else {
+                
+                do {
+                    let accountDTO = try JSONDecoder().decode(AccountDTO.self, from: response as! Data)
+                    self.accountBind.send((accountDTO.toAccount(), nil))
+                                        
+                } catch {
+                    print("getDataList Unexpected error: \(error).")
+                }
+            }
+        })
+        
+        return accountBind
+    }
+    
+    //  MARK: - logOut
+    /// LogOut Account from device
+    ///
+    /// - throws: None
+    /// - returns: None
+    ///
+    func logOut() {
+        
+        UserDefaults.standard.removeObject(forKey: Constants.token)
+        UserDefaults.standard.removeObject(forKey: Constants.id)
+        UserDefaults.standard.synchronize()
     }
     
     
@@ -157,16 +209,18 @@ class EmailRepositoryIMP : EmailRepository {
         let parameters = [ "page" : page ]
         
         networkHandler.sendGetRequest(url: APIConstans.messages, parameters: parameters, completion: {
-            (response: Any, status: Bool) in
+            (response: Any, error: Error?) in
             
-            if status {
+            if (error != nil) {
+                
+            } else {
+                
                 do {
                     let domainsDTO = try JSONDecoder().decode(MessagesDTO.self, from: response as! Data)
                     self.messagesBind.send(domainsDTO.member.map({ $0.toMessage() }))
                 } catch {
                     print("getDataList Unexpected error: \(error).")
                 }
-            } else {
                 //delegate.checkUserNameFailed()
             }
         })

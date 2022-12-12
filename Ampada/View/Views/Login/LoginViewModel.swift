@@ -11,15 +11,15 @@ import Combine
 class LoginViewModel {
     
     var subscriptions = Set<AnyCancellable>()
-    let emailRepositoryIMP : EmailRepositoryIMP
+    let emailRepository : EmailRepository
     
-    init(_ emailRepositoryIMP: EmailRepositoryIMP) {
-        self.emailRepositoryIMP = emailRepositoryIMP
+    init(_ emailRepository: EmailRepository) {
+        self.emailRepository = emailRepository
     }
     
     func signIn(userName: String, password: String) {
         
-        emailRepositoryIMP.getToken(with: userName, password: password)
+        emailRepository.getToken(with: userName, password: password)
             .sink(receiveCompletion: {value in
 
         }, receiveValue: { [weak self] value in
