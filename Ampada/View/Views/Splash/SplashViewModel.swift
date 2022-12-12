@@ -34,26 +34,36 @@ class SplashViewModel {
                     
                     self?.emailRepository.logOut()
                     
-                    if let repo = self?.emailRepository {
-                        let view = LoginViewController(.init(repo))
-                        UIApplication.shared.windows.first?.rootViewController = view
-                        UIApplication.shared.windows.first?.makeKeyAndVisible()
+                    guard let repo = self?.emailRepository  else {
+                        return
                     }
+                    
+                    let view = UINavigationController(rootViewController: LoginViewController(.init(repo)))
+                    UIApplication.shared.currentUIWindow()?.rootViewController = view
+                    UIApplication.shared.currentUIWindow()?.makeKeyAndVisible()
                     
                 } else {
                     
-                    let view = HomeViewController()
-                    UIApplication.shared.windows.first?.rootViewController = view
-                    UIApplication.shared.windows.first?.makeKeyAndVisible()
+                    guard let account = account else {
+                        return
+                    }
+                    
+                    guard let repo = self?.emailRepository  else {
+                        return
+                    }
+                    
+                    let view = UINavigationController(rootViewController: HomeViewController(.init(repo, account: account)))
+                    UIApplication.shared.currentUIWindow()?.rootViewController = view
+                    UIApplication.shared.currentUIWindow()?.makeKeyAndVisible()
                 }
             
             }).store(in: &subscriptions)
             
         } else {
             
-            let view = LoginViewController(.init(emailRepository))
-            UIApplication.shared.windows.first?.rootViewController = view
-            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            let view = UINavigationController(rootViewController: LoginViewController(.init(emailRepository)))
+            UIApplication.shared.currentUIWindow()?.rootViewController = view
+            UIApplication.shared.currentUIWindow()?.makeKeyAndVisible()
         }
     }
 }

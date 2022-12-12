@@ -15,7 +15,7 @@ class EmailRepositoryIMP : EmailRepository {
     private let networkHandler = NetworkHandler()
     private var domainBind = PassthroughSubject<[Domain], Never>()
     private var signUpBind = PassthroughSubject<Account, Never>()
-    private var tokenBind = PassthroughSubject<GetTokenStatus, Never>()
+    private var tokenBind = PassthroughSubject<(GetTokenStatus?, Error?), Never>()
     private var messagesBind = PassthroughSubject<[Message], Never>()
     private var accountBind = PassthroughSubject<(Account?, Error?), Never>()
     
@@ -118,7 +118,7 @@ class EmailRepositoryIMP : EmailRepository {
     /// - throws: none
     /// - returns: Returns a token status by PassthroughSubject (Combine)
     ///
-    func getToken(with username: String, password: String) -> PassthroughSubject<GetTokenStatus, Never> {
+    func getToken(with username: String, password: String) -> PassthroughSubject<(GetTokenStatus?, Error?), Never> {
         
         let parameters = [
             "address"  : username,
@@ -129,20 +129,17 @@ class EmailRepositoryIMP : EmailRepository {
             (response: Any, error: Error?) in
             
             if (error != nil) {
-                //print(response)
-                
+                self.tokenBind.send((.failed, error))
             } else {
                 
                 do {
                     let tokenDTO = try JSONDecoder().decode(TokenDTO.self, from: response as! Data)
                     let token = tokenDTO.toToken()
                     token.saveToUserDefault()
-                    self.tokenBind.send(.success)
+                    self.tokenBind.send((.success, nil))
                 } catch {
-                    self.tokenBind.send(.failed)
-                    print("getDataList Unexpected error: \(error).")
+                    self.tokenBind.send((.failed, Error("")))
                 }
-                //delegate.checkUserNameFailed()
             }
         })
         
@@ -164,7 +161,6 @@ class EmailRepositoryIMP : EmailRepository {
             (response: Any, error: Error?) in
             
             if (error != nil) {
-                print(error?.message)
                 self.accountBind.send((nil, error))
                 
             } else {

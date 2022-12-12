@@ -37,3 +37,10 @@ struct Message {
         updatedAt      = Date(messageDTO.updatedAt)
     }
 }
+
+extension Message {
+    
+    func toMessageVM() -> MessageVM {
+        return MessageVM(self)
+    }
+}

@@ -48,7 +48,7 @@ protocol EmailRepository {
     /// - throws: None
     /// - returns: Returns a token status by PassthroughSubject (Combine)
     ///
-    func getToken(with username: String, password: String) -> PassthroughSubject<GetTokenStatus, Never>
+    func getToken(with username: String, password: String) -> PassthroughSubject<(GetTokenStatus?, Error?), Never>
     
     //  MARK: - GetAccount
     /// Get an Account resource by its id

@@ -26,4 +26,12 @@ extension UIViewController {
         view.modalTransitionStyle   = .crossDissolve
         present(view, animated: true, completion: nil)
     }
+    
+    func addAlert(_ message: String) {
+        
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
 }

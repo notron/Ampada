@@ -51,12 +51,12 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signUpAction(_ sender: Any) {
         
-        guard let userName = usernameTextField.text as? String else {
+        guard let userName = usernameTextField.text else {
             
             return
         }
         
-        guard let password = passwordTextField.text as? String else {
+        guard let password = passwordTextField.text else {
             
             return
         }
@@ -92,7 +92,7 @@ extension SignUpViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        var label = UILabel()
+        let label = UILabel()
         label.font = UIFont(name: "Helvetica", size: 12)
         label.text = domains[row].title
         label.textAlignment = .center

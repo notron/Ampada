@@ -51,6 +51,13 @@
 		11C8D295294698330082F8B0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D294294698330082F8B0 /* SplashViewModel.swift */; };
 		11C8D29729476B0A0082F8B0 /* ErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29629476B0A0082F8B0 /* ErrorDTO.swift */; };
 		11C8D29929476B430082F8B0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29829476B430082F8B0 /* Error.swift */; };
+		11C8D29B294781F90082F8B0 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29A294781F90082F8B0 /* HomeViewModel.swift */; };
+		11C8D29D2947C7870082F8B0 /* MessageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29C2947C7870082F8B0 /* MessageVM.swift */; };
+		11C8D29F2947CBBE0082F8B0 /* HomeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D29E2947CBBE0082F8B0 /* HomeTableViewDataSource.swift */; };
+		11C8D2A32947CE230082F8B0 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2A12947CE230082F8B0 /* HomeTableViewCell.swift */; };
+		11C8D2A42947CE230082F8B0 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C8D2A22947CE230082F8B0 /* HomeTableViewCell.xib */; };
+		11C8D2A62947CF560082F8B0 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2A52947CF560082F8B0 /* UITableView.swift */; };
+		11C8D2A82947D8710082F8B0 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C8D2A72947D8710082F8B0 /* UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +106,13 @@
 		11C8D294294698330082F8B0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		11C8D29629476B0A0082F8B0 /* ErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDTO.swift; sourceTree = "<group>"; };
 		11C8D29829476B430082F8B0 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		11C8D29A294781F90082F8B0 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		11C8D29C2947C7870082F8B0 /* MessageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVM.swift; sourceTree = "<group>"; };
+		11C8D29E2947CBBE0082F8B0 /* HomeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSource.swift; sourceTree = "<group>"; };
+		11C8D2A12947CE230082F8B0 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		11C8D2A22947CE230082F8B0 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		11C8D2A52947CF560082F8B0 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		11C8D2A72947D8710082F8B0 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				11C8D28D29468D750082F8B0 /* DomainVM.swift */,
+				11C8D29C2947C7870082F8B0 /* MessageVM.swift */,
 			);
 			path = VIewModels;
 			sourceTree = "<group>";
@@ -200,8 +215,11 @@
 		11C8D2312945B4FC0082F8B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				11C8D2A02947CDFE0082F8B0 /* Cell */,
 				11C8D2322945B51A0082F8B0 /* HomeViewController.swift */,
 				11C8D2332945B51A0082F8B0 /* HomeViewController.xib */,
+				11C8D29A294781F90082F8B0 /* HomeViewModel.swift */,
+				11C8D29E2947CBBE0082F8B0 /* HomeTableViewDataSource.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -221,6 +239,8 @@
 			children = (
 				11C8D23C2945BC150082F8B0 /* UIColor.swift */,
 				11C8D23D2945BC150082F8B0 /* UIViewController.swift */,
+				11C8D2A52947CF560082F8B0 /* UITableView.swift */,
+				11C8D2A72947D8710082F8B0 /* UIApplication.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -300,6 +320,15 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		11C8D2A02947CDFE0082F8B0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				11C8D2A12947CE230082F8B0 /* HomeTableViewCell.swift */,
+				11C8D2A22947CE230082F8B0 /* HomeTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C8D28A294689620082F8B0 /* SignUpViewController.xib in Resources */,
+				11C8D2A42947CE230082F8B0 /* HomeTableViewCell.xib in Resources */,
 				11C8D293294697EE0082F8B0 /* SplashViewController.xib in Resources */,
 				11C8D23A2945BB580082F8B0 /* LoginViewController.xib in Resources */,
 				11C8D2252945B3810082F8B0 /* LaunchScreen.storyboard in Resources */,
@@ -382,6 +412,7 @@
 			files = (
 				11C8D2542945E6B80082F8B0 /* DomainDTO.swift in Sources */,
 				11C8D26E29463AD20082F8B0 /* AccountDTO.swift in Sources */,
+				11C8D2A32947CE230082F8B0 /* HomeTableViewCell.swift in Sources */,
 				11C8D28E29468D750082F8B0 /* DomainVM.swift in Sources */,
 				11C8D292294697EE0082F8B0 /* SplashViewController.swift in Sources */,
 				11C8D2662945FB7F0082F8B0 /* APIConstans.swift in Sources */,
@@ -394,13 +425,16 @@
 				11C8D270294643CB0082F8B0 /* Token.swift in Sources */,
 				11C8D279294661710082F8B0 /* Message.swift in Sources */,
 				11C8D289294689620082F8B0 /* SignUpViewController.swift in Sources */,
+				11C8D29D2947C7870082F8B0 /* MessageVM.swift in Sources */,
 				11C8D2392945BB580082F8B0 /* LoginViewController.swift in Sources */,
 				11C8D2192945B37E0082F8B0 /* AppDelegate.swift in Sources */,
 				11C8D272294644180082F8B0 /* TokenDTO.swift in Sources */,
 				11C8D27B29466A7F0082F8B0 /* Person.swift in Sources */,
 				11C8D268294602A60082F8B0 /* DomainsDTO.swift in Sources */,
+				11C8D29B294781F90082F8B0 /* HomeViewModel.swift in Sources */,
 				11C8D28129466C780082F8B0 /* MessagesDTO.swift in Sources */,
 				11C8D285294683CA0082F8B0 /* LoginViewModel.swift in Sources */,
+				11C8D29F2947CBBE0082F8B0 /* HomeTableViewDataSource.swift in Sources */,
 				11C8D2402945BC150082F8B0 /* UIViewController.swift in Sources */,
 				11C8D29729476B0A0082F8B0 /* ErrorDTO.swift in Sources */,
 				11C8D21B2945B37E0082F8B0 /* SceneDelegate.swift in Sources */,
@@ -417,6 +451,8 @@
 				11C8D2492945BC620082F8B0 /* CButton.swift in Sources */,
 				11C8D28C294689A20082F8B0 /* SignUpViewModel.swift in Sources */,
 				11C8D2512945E6150082F8B0 /* Domain.swift in Sources */,
+				11C8D2A82947D8710082F8B0 /* UIApplication.swift in Sources */,
+				11C8D2A62947CF560082F8B0 /* UITableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

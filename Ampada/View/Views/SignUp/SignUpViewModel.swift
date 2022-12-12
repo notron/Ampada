@@ -7,11 +7,14 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class SignUpViewModel {
     
     private var subscriptions = Set<AnyCancellable>()
     let emailRepository : EmailRepository
+    weak var view: SignUpViewController?
+    var account: Account?
     
     private var domainViewModelsBind = PassthroughSubject<[DomainVM], Never>()
     
@@ -41,6 +44,7 @@ class SignUpViewModel {
 
         }, receiveValue: { [weak self] value in
             
+            self?.account = value
             self?.getToken(userName: value.address, password: password)
 
         }).store(in: &subscriptions)
@@ -49,11 +53,28 @@ class SignUpViewModel {
     private func getToken(userName: String, password: String) {
         
         emailRepository.getToken(with: userName, password: password)
-        .sink(receiveCompletion: {value in
-        
-        }, receiveValue: { [weak self] value in
-            print("CCCCCCCCCC Bind \(value)")
-        
+            .sink(receiveCompletion: {value in
+
+            }, receiveValue: { [weak self] (status, error) in
+            
+                if (error != nil) {
+                    print(error!.message)
+                    self?.view?.addAlert(error!.message)
+                } else {
+                    
+                    guard let repo = self?.emailRepository else {
+                        return
+                    }
+                    
+                    guard let account = self?.account else {
+                        return
+                    }
+                    
+                    let view = UINavigationController(rootViewController: HomeViewController(.init(repo, account: account)))
+                    UIApplication.shared.currentUIWindow()?.rootViewController = view
+                    UIApplication.shared.currentUIWindow()?.makeKeyAndVisible()
+                }
+
         }).store(in: &subscriptions)
     }
 }

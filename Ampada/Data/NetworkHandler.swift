@@ -37,7 +37,7 @@ class NetworkHandler {
     private func sendRequest(url: String, method: HTTPMethod, headers: HTTPHeaders?, parameters: Parameters, completion: @escaping(Any, Error?) -> Void) {
         
         var currentHeaders : HTTPHeaders = [
-            "Authorization" : token,
+            "Authorization" : "Bearer " + token,
             "Content-Type"  : "application/json"
         ]
         if headers != nil { currentHeaders = headers! }
@@ -85,9 +85,21 @@ class NetworkHandler {
         AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: currentHeaders)
             .responseData { response in
                 print("Body For \(url): \n \(String(describing: response.value?.convertToDictionary()))")
+                
             switch response.result {
             case .success:
-                completion(response.value as Any, nil)
+                
+                do {
+                    let errorDTO = try JSONDecoder().decode(ErrorDTO.self, from: response.value ?? Data())
+                    
+                    completion(false, errorDTO.toError())
+
+                } catch {
+                    print("getDataList Unexpected error: \(error).")
+                    completion(response.value as Any, nil)
+                }
+                
+                //completion(response.value as Any, true)
             case .failure(let error):
                 completion(false, Error(error.errorDescription ?? ""))
             }

@@ -6,56 +6,59 @@
 //
 
 import UIKit
+import Combine
 
 class HomeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    @IBOutlet weak var tableView : UITableView!
+    
+    private let homeViewModel: HomeViewModel
+    private var subscriptions = Set<AnyCancellable>()
+    private var messages = [MessageVM]()
+    private var homeDataSource : HomeTableViewDataSource!
+    private var timer = Timer()
+    
+    init(_ homeViewModel: HomeViewModel) {
+        
+        self.homeViewModel = homeViewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
-    //        if emailRepositoryIMP.doWeHaveAToken() == .success {
-    //            getMessage()
-    //        }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-//    func login(domain: Domain) {
-//        
-//        emailRepositoryIMP.signUp(with: "mahdi2", password: "12345", domain: domain)
-//            .sink(receiveCompletion: {value in
-//            
-//        }, receiveValue: { [weak self] value in
-//            print("BBBBBBBBBB Bind \(value.address)")
-//
-//            self?.getToken(account: value)
-//            
-//        }).store(in: &subscriptions)
-//    }
-    
-    
-//    
-//    func getToken(account: Account) {
-//        
-//        emailRepositoryIMP.getToken(with: account.address, password: "12345")
-//            .sink(receiveCompletion: {value in
-//            
-//        }, receiveValue: { [weak self] value in
-//            print("CCCCCCCCCC Bind \(value)")
-//            
-//        }).store(in: &subscriptions)
-//    }
-//    
-//    func getMessage()  {
-//        
-//        emailRepositoryIMP.getMessages(page: 1)
-//            .sink(receiveCompletion: {value in
-//            
-//            }, receiveValue: { [weak self] value in
-//                print("DDDDDDDDDD Bind \(value.map({ $0.intro }))")
-//
-//                //self?.login(domain: value.first!)
-//                
-//            }).store(in: &subscriptions)
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        homeDataSource = HomeTableViewDataSource(items: messages, tableView: tableView, delegate: self)
+        
+        tableView.dataSource = homeDataSource
+        tableView.delegate   = homeDataSource
+        
+        homeViewModel.messageViewModelsBind.sink(receiveValue: {
+            [weak self] messages in
+            
+            self?.messages = messages
+            self?.homeDataSource.updateTable(items: messages)
 
+            }).store(in: &subscriptions)
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { _ in
+            self.homeViewModel.getMessage(page: 1)
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        homeViewModel.getMessage(page: 1)
+    }
+}
+
+extension HomeViewController: HomeTableViewDataSourceDelegate {
+    
+    func didSelectRow(index: Int) {
+        print("select index: \(index)")
+    }
 }
